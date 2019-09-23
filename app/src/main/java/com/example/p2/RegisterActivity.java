@@ -29,13 +29,21 @@ public class RegisterActivity extends AppCompatActivity {
                 String userPhone = editTextUserPhone.getText().toString();
                 String userPassword = editTextUserPassword.getText().toString();
 
-                Intent intent = new Intent(RegisterActivity.this, ShowInfoActivity.class);
-                intent.putExtra("USER_NAME", userName);
-                intent.putExtra("USER_EMAIL", userEmail);
-                intent.putExtra("USER_PHONE", userPhone);
-                intent.putExtra("USER_PASSWORD", userPassword);
 
-                startActivity(intent);
+                if(userName.isEmpty() || userEmail.isEmpty() || userPassword.isEmpty()){
+                    editTextUserEmail.setError("Campo requerido");
+                    editTextUserName.setError("Campo requerido");
+                    editTextUserPassword.setError("Campo requerido");
+                }else{
+                    Intent intent = new Intent(RegisterActivity.this, ShowInfoActivity.class);
+                    intent.putExtra("USER_NAME", userName);
+                    intent.putExtra("USER_EMAIL", userEmail);
+                    intent.putExtra("USER_PHONE", userPhone);
+                    intent.putExtra("USER_PASSWORD", userPassword);
+
+                    startActivity(intent);
+                }
+
             }
         });
     }
